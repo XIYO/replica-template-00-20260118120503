@@ -11,16 +11,13 @@ export default defineConfig({
 	site: siteUrl,
 	output: 'static',
 	adapter: cloudflare(),
-	prefetch: {
-		prefetchAll: true,
-		defaultStrategy: 'hover',
-	},
-	experimental: {
-		clientPrerender: true,
-	},
 	integrations: [
 		starlight({
 			title: siteConfig.title,
+			defaultLocale: 'root',
+			locales: {
+				root: { label: '한국어', lang: 'ko-KR' }
+			},
 			customCss: ['./src/styles/custom.css'],
 			social: [
 				{
@@ -30,9 +27,8 @@ export default defineConfig({
 				},
 			],
 			sidebar: [
-				{ label: '개요', autogenerate: { directory: 'overview' } },
-				{ label: '핵심 기술', autogenerate: { directory: 'core-technologies' } },
-				{ label: '미래 전망', autogenerate: { directory: 'future-outlook' } },
+				{ label: '등장인물 및 조직', autogenerate: { directory: 'characters-and-entities' } },
+				{ label: '세계관 시스템 및 메커니즘', autogenerate: { directory: 'mechanics-and-systems' } },
 			],
 		}),
 	],
